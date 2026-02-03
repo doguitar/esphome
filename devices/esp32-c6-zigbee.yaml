@@ -1,0 +1,17 @@
+packages:
+  - !include esp32-c6.yaml
+  - !include ../external/zigbee.yaml
+
+esp32:
+  partitions: devices/esp32-c6-zigbee-partitions.csv
+
+zigbee:
+  id: zb
+  router: true
+  components: all
+  on_join:
+    then:
+      logger.log:
+        level: INFO
+        format: "Joined network"
+        tag: "esp32-c6-zigbee"

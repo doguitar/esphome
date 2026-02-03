@@ -1,0 +1,6 @@
+time:
+  - platform: sntp
+    id: network_time
+    timezone: America/Los_Angeles
+    servers:
+     - tims.updo.gg

@@ -1,0 +1,13 @@
+api:
+  reboot_timeout: 0s
+  encryption:
+    key: !secret ha_api_key
+  on_client_connected:
+    - logger.log:
+        level: INFO
+        format: "Web server: Client connected from %s"
+        args: ['client_info.c_str()']
+  on_client_disconnected:
+    - logger.log:
+        level: INFO
+        format: "Web server: Client disconnected"

@@ -1,0 +1,19 @@
+esphome:
+  name: "sprinkler-remote"
+  friendly_name: "sprinkler-remote"
+  name_add_mac_suffix: "true"
+  project:
+    name: esphome.sprinkler-remote
+    version: "1.0"
+
+packages:
+  zone1: !include
+      file: switch.yaml
+      vars:
+        zone_number: "1"
+        zone_gpio: "${zone1_gpio}"
+  zone2: !include
+      file: switch.yaml
+      vars:
+        zone_number: "2"
+        zone_gpio: "${zone2_gpio}"

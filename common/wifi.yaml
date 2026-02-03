@@ -1,0 +1,12 @@
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+text_sensor:
+  - platform: wifi_info
+    ip_address:
+      name: IP Address
+      internal: true
+    mac_address:
+      name: MAC Address
+      internal: true

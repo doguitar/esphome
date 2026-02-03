@@ -1,0 +1,27 @@
+packages:
+  - !include wifi.yaml
+  - !include ota.yaml
+  - !include api.yaml
+  - !include nntp.yaml
+  - !include web-server.yaml
+
+logger:
+  level: VERBOSE
+  initial_level: INFO
+
+esphome:
+  name: "esphome"
+  friendly_name: "esphome"
+  name_add_mac_suffix: "true"
+
+improv_serial:
+
+select:
+  - platform: logger
+    name: "Logger level"
+
+button:
+  - platform: restart
+    name: "Reboot"
+    icon: mdi:power
+    internal: true

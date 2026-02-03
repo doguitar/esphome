@@ -1,0 +1,24 @@
+#number:
+#  - platform: template
+#    optimistic: true
+#    id: z${zone_number}Time
+#    name: Zone ${zone_number} Maximum Runtime
+#    min_value: 0
+#    max_value: 60
+#    step: 1
+#    initial_value: 30
+#    mode: SLIDER
+#    unit_of_measurement: "min"
+
+switch:
+  - platform: gpio
+    pin: "${zone_gpio}"
+    id: z${zone_number}
+    inverted: true
+    restore_mode: ALWAYS_OFF
+    name: Zone ${zone_number}
+    internal: False
+    on_turn_on:
+      then:
+        - delay: 30min
+        - switch.turn_off: z${zone_number}

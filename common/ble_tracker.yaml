@@ -1,0 +1,21 @@
+esp32_ble_tracker:
+  active: true
+  continuous: true
+  on_ble_advertise:
+    then:
+      - lambda: |-
+          ESP_LOGD("ble_advertise", "New BLE device");
+          ESP_LOGD("ble_advertise", "  address: %s", x.address_str().c_str());
+          ESP_LOGD("ble_advertise", "  name: %s", x.get_name().c_str());
+          ESP_LOGD("ble_advertise", "  Advertised service UUIDs:");
+          for (auto uuid : x.get_service_uuids()) {
+              ESP_LOGD("ble_advertise", "    - %s", uuid.to_string().c_str());
+          }
+          ESP_LOGD("ble_advertise", "  Advertised service data:");
+          for (auto data : x.get_service_datas()) {
+              ESP_LOGD("ble_advertise", "    - %s: (length %i)", data.uuid.to_string().c_str(), data.data.size());
+          }
+          ESP_LOGD("ble_advertise", "  Advertised manufacturer data:");
+          for (auto data : x.get_manufacturer_datas()) {
+              ESP_LOGD("ble_advertise", "    - %s: (length %i)", data.uuid.to_string().c_str(), data.data.size());
+          }

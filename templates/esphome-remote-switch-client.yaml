@@ -1,0 +1,14 @@
+switch:
+  - platform: template
+    id: ${switch_id}
+    restore_mode: ALWAYS_OFF
+    turn_on_action:
+      then:
+        - http_request.post:
+            url: "http://${remote_host}/switch/${remote_switch}/turn_on"
+        - delay: 1s
+    turn_off_action:
+      then:
+        - http_request.post:
+            url: "http://${remote_host}/switch/${remote_switch}/turn_off"
+        - delay: 1s
